@@ -83,12 +83,12 @@ class Magazine:
         titles = [article.title for article in self.articles()]                  
         return titles if titles else None                                    #if there are no articles return None
     def contributing_authors(self):
-        author_counts = {}                                          #generate a dictionary for storing contributing authors who have done so more than twice
+        counts_of_authors = {}                                          #generate a dictionary for storing contributing authors who have done so more than twice
         for article in self.articles():
             author = article.author
-            author_counts[author] = author_counts.get(author, 0) + 1
-        contributors = [author for author, count in author_counts.items() if count>2]      #get the author who has more than two contributions
-        return contributors if contributors else None
+            counts_of_authors[author] = counts_of_authors.get(author, 0) + 1      #default = 0
+        contributors = [author for author, count in counts_of_authors.items() if count>2]      #get the author who has more than two contributions
+        return contributors if contributors else None       #return contributors if present and None if nonexistent
 
 
 # mark = Author("Mark")
@@ -112,14 +112,14 @@ class Magazine:
 # print(article.title)
 
 
-# if type(name) == str and 2<=len(name)<=16:
+# if type(name) == str and 2<=len(name)<=16:     #conditional for name length 
 
 
 # return [article for article in Article.all if article.magazine is self]   ///working
 
 # def contributing_authors(self):       #simplify
 #         author_counts = {}                                         
-#         for article in self.articles():
+#         for article in self.articles():                                            #the names are not descriptive enough ~ must change
 #             author = article.author
 #             author_counts[author] = author_counts.get(author, 0) + 1
 #         contributors = [author for author, count in author_counts.items() if count>2]      
